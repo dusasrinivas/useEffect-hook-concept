@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import {useState, useEffect} from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+
+const App=()=>{
+  const [score, setScore]= useState(0)
+   useEffect(()=>{ 
+    document.title=`score: ${score}`
+   })
+   
+const onIncrement=()=>{
+  setScore(prevScore=>prevScore+1)
+  
 }
 
-export default App;
+ 
+const onDecrement=()=>{
+  setScore(prevScore=>prevScore-1)
+}
+ 
+return (
+  <>
+  <p>
+     {score}
+  </p>
+  <button type="button" onClick={onIncrement}>
+    Increment
+    
+  </button>
+  <button type="button" onClick={onDecrement}>
+    Decrement
+    
+  </button>
+  
+  </>
+)
+
+}
+
+export default App
